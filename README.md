@@ -2,6 +2,13 @@
 
 This is a solution to the [Product preview card component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-preview-card-component-GO7UmttRfa). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
+To run this project, use the following commands in the terminal or command prompt:
+
+```bash
+npm install
+npm start
+```
+
 ## Table of contents
 
 - [Frontend Mentor - Product preview card component solution](#frontend-mentor---product-preview-card-component-solution)
