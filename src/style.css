@@ -37,6 +37,10 @@ body {
   background-color: hsl(30, 38%, 92%);
   color: hsl(212, 21%, 14%);
   font: 700 0.875rem / 1.1 "Montserrat", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .btn--primary {

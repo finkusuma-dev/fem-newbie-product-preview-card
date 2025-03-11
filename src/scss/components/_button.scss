@@ -4,9 +4,15 @@
   height: rem(50px);
   border-radius: $spacing-100;
   border: 1px solid $color-grey;
+
   background-color: $color-cream;
   color: $color-black;
   font: $text-preset-2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-100;
 }
 
 .btn--primary {
