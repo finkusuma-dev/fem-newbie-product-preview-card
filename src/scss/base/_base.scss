@@ -14,4 +14,15 @@ body {
   color: $color-grey;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-family: Arial, Helvetica, sans-serif;
+
+  @include respond-to('tablet') {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+main {
+  max-width: fit-content;
 }

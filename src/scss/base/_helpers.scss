@@ -12,6 +12,11 @@
 }
 
 .container {
+  max-width: fit-content;
   margin: 80px 12px 100px;
   position: relative;
+
+  @include respond-to('tablet') {
+    margin: unset;
+  }
 }

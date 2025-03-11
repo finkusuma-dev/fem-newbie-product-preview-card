@@ -18,7 +18,13 @@
 
     display: flex;
     flex-direction: column;
-    gap: rem(24px);
+    gap: rem($spacing-300);
+  }
+
+  &__text-content {
+    display: flex;
+    flex-direction: column;
+    gap: rem($spacing-300);
   }
 
   &__title {
@@ -26,10 +32,10 @@
     color: $color-black;
   }
 
-  &__ribbon {
-    // font: $text-preset-4;
-    // letter-spacing: 5px;
-  }
+  // &__ribbon {
+  // font: $text-preset-4;
+  // letter-spacing: 5px;
+  // }
 
   &__description {
     font: $text-preset-3;
@@ -48,5 +54,23 @@
   &__price {
     font: $text-preset-1;
     color: $color-green-500;
+  }
+
+  @include respond-to('tablet') {
+    width: 600px;
+    display: flex;
+
+    &__img-half {
+      width: 50%;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    &__text-half {
+      width: 50%;
+      gap: rem($spacing-400);
+    }
   }
 }

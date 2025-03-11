@@ -1,0 +1,32 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'variables';
+
+@mixin respond-to($breakpoint) {
+  // @debug map.get($map: variables.$breakpoints, $key: $breakpointName);
+
+  $width: map.get(
+    $map: variables.$breakpoints,
+    $key: $breakpoint,
+  );
+
+  // @debug ($width);
+  // @debug (meta.type-of($width));
+
+  @if $width {
+    $width: if(
+      meta.type-of($width) == 'string',
+      string.unquote($width),
+      $width
+    );
+    // @debug $width;
+  } @else {
+    @error 'No value found for `#{$breakpoint}`. '
+		   + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+
+  @media (min-width: $width) {
+    @content;
+  }
+}

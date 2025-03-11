@@ -1,5 +1,10 @@
 @use 'functions';
 
+$breakpoints: (
+  'tablet': functions.rem(768px),
+  'desktop': functions.rem(1440px),
+);
+
 // # Colors
 // ## Primary
 

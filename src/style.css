@@ -13,6 +13,18 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-family: Arial, Helvetica, sans-serif;
 }
+@media (min-width: 48rem) {
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+main {
+  max-width: fit-content;
+}
 
 /* ie9+ */
 .visually-hidden:not(:focus):not(:active) {
@@ -26,8 +38,14 @@ body {
 }
 
 .container {
+  max-width: fit-content;
   margin: 80px 12px 100px;
   position: relative;
+}
+@media (min-width: 48rem) {
+  .container {
+    margin: unset;
+  }
 }
 
 .btn {
@@ -64,6 +82,11 @@ body {
   flex-direction: column;
   gap: 1.5rem;
 }
+.product-preview-card__text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 .product-preview-card__title {
   font: 700 2rem / 1 "Fraunces", sans-serif;
   color: hsl(212, 21%, 14%);
@@ -83,6 +106,22 @@ body {
   font: 700 2rem / 1 "Fraunces", sans-serif;
   color: hsl(158, 36%, 37%);
 }
+@media (min-width: 48rem) {
+  .product-preview-card {
+    width: 600px;
+    display: flex;
+  }
+  .product-preview-card__img-half {
+    width: 50%;
+  }
+  .product-preview-card__img-half img {
+    height: 100%;
+  }
+  .product-preview-card__text-half {
+    width: 50%;
+    gap: 2rem;
+  }
+}
 
 .ribbon-text {
   font: 500 0.75rem / 1.2 "Montserrat", sans-serif;
@@ -94,13 +133,19 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  top: calc(100% + 16px);
+  top: calc(100% + var(--spacing));
   font-size: 11px;
   text-align: center;
-  color: hsl(228, 12%, 38%);
+  color: hsl(228, 1.7674418605%, 43%);
+  --spacing: 16px;
+}
+@media (min-width: 48rem) {
+  .attribution {
+    --spacing: 24px;
+  }
 }
 .attribution__a {
-  color: hsl(228, 12%, 28%);
+  color: hsl(0, 0%, 30.5025996534%);
   font-weight: bolder;
 }
 

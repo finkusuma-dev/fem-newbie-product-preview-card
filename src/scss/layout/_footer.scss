@@ -1,20 +1,27 @@
+@use 'sass:color';
 @use '../abstracts' as *;
 
 .attribution {
   position: absolute;
   left: 0;
   right: 0;
-  top: calc(100% + $spacing-200);
+
+  top: calc(100% + var(--spacing));
 
   font-size: 11px;
   text-align: center;
 
-  color: darken($color: $color-grey, $amount: 10%);
+  color: color.adjust($color-grey, $blackness: 10%);
+
+  --spacing: #{$spacing-200};
+  @include respond-to('tablet') {
+    --spacing: #{$spacing-300};
+  }
 
   &__a {
     // color: hsl(228, 45%, 44%);
     // color: inherit;
-    color: darken($color-grey, $amount: 20%);
+    color: color.adjust($color-grey, $blackness: 50%);
     font-weight: bolder;
   }
 }
