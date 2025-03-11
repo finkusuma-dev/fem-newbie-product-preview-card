@@ -1,0 +1,15 @@
+@use '../abstracts' as *;
+
+.btn {
+  height: rem(50px);
+  border-radius: $spacing-100;
+  border: 1px solid $color-grey;
+  background-color: $color-cream;
+  color: $color-black;
+  font: $text-preset-2;
+}
+
+.btn--primary {
+  background-color: $color-green-500;
+  color: $color-white;
+}

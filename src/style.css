@@ -1,10 +1,103 @@
-.attribution {
-  font-size: 11px;
-  text-align: center;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 
-.attribution a {
-  color: hsl(228, 45%, 44%);
+body {
+  box-sizing: border-box;
+  background-color: hsl(30, 38%, 92%);
+  color: hsl(228, 12%, 48%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ie9+ */
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.container {
+  margin: 80px 12px 100px;
+  position: relative;
+}
+
+.btn {
+  height: 3.125rem;
+  border-radius: 8px;
+  border: 1px solid hsl(228, 12%, 48%);
+  background-color: hsl(30, 38%, 92%);
+  color: hsl(212, 21%, 14%);
+  font: 700 0.875rem / 1.1 "Montserrat", sans-serif;
+}
+
+.btn--primary {
+  background-color: hsl(158, 36%, 37%);
+  color: hsl(0, 0%, 100%);
+}
+
+.product-preview-card {
+  border-radius: 8px;
+  background-color: hsl(0, 0%, 100%);
+  overflow: hidden;
+}
+.product-preview-card__img-half img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.product-preview-card__text-half {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.product-preview-card__title {
+  font: 700 2rem / 1 "Fraunces", sans-serif;
+  color: hsl(212, 21%, 14%);
+}
+.product-preview-card__description {
+  font: 500 0.875rem / 1.6 "Montserrat", sans-serif;
+}
+.product-preview-card__prices {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.product-preview-card__prices s {
+  font: 500 0.8125rem / 1.2 "Montserrat", sans-serif;
+}
+.product-preview-card__price {
+  font: 700 2rem / 1 "Fraunces", sans-serif;
+  color: hsl(158, 36%, 37%);
+}
+
+.ribbon-text {
+  font: 500 0.75rem / 1.2 "Montserrat", sans-serif;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.attribution {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 16px);
+  font-size: 11px;
+  text-align: center;
+  color: hsl(228, 12%, 38%);
+}
+.attribution__a {
+  color: hsl(228, 12%, 28%);
+  font-weight: bolder;
 }
 
 /*# sourceMappingURL=style.css.map */

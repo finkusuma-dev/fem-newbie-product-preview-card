@@ -1,0 +1,10 @@
+@use 'sass:math';
+
+/// Function to convert px to rem.
+///
+/// param {number (px)} $value
+///   If the unit is not `px` it outputs the `$value` itself.
+///   Example: rem(16px) => 1rem, rem(2rem) => 2rem.
+@function rem($value) {
+  @return if(math.unit($value) == 'rem', $value, calc($value / 16px * 1rem));
+}

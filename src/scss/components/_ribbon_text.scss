@@ -1,0 +1,7 @@
+@use '../abstracts' as *;
+
+.ribbon-text {
+  font: $text-preset-4;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
