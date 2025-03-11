@@ -14,7 +14,7 @@
   color: color.adjust($color-grey, $blackness: 10%);
 
   --spacing: #{$spacing-200};
-  @include respond-to('tablet') {
+  @include respond-to($tablet) {
     --spacing: #{$spacing-300};
   }
 

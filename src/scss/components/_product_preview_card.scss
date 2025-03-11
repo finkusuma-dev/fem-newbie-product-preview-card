@@ -56,7 +56,7 @@
     color: $color-green-500;
   }
 
-  @include respond-to('tablet') {
+  @include respond-to($tablet) {
     width: 600px;
     display: flex;
 

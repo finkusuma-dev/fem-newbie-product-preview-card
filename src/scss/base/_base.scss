@@ -15,7 +15,7 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-family: Arial, Helvetica, sans-serif;
 
-  @include respond-to('tablet') {
+  @include respond-to($tablet) {
     min-height: 100vh;
     display: flex;
     justify-content: center;

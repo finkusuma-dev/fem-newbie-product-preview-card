@@ -1,8 +1,11 @@
 @use 'functions';
 
+$tablet: 'tablet';
+$desktop: 'desktop';
+
 $breakpoints: (
-  'tablet': functions.rem(768px),
-  'desktop': functions.rem(1440px),
+  $tablet: functions.rem(768px),
+  $desktop: functions.rem(1440px),
 );
 
 // # Colors
