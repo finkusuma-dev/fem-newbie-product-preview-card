@@ -1,5 +1,9 @@
+@use 'sass:color';
 @use '../abstracts' as *;
 
+/* -------------------------------------------------------------------------- */
+/*                                 Typography                                 */
+/* -------------------------------------------------------------------------- */
 body {
   // font: abstracts.$text-preset-3;
   color: $color-grey;
@@ -10,3 +14,17 @@ body {
 // h2 {
 // font: abstracts.$text-preset-1;
 // }
+
+.attribution {
+  & {
+    font-size: 11px;
+    color: color.adjust($color-grey, $blackness: 10%);
+  }
+
+  &__a {
+    // color: hsl(228, 45%, 44%);
+    // color: inherit;
+    color: color.adjust($color-grey, $blackness: 50%);
+    font-weight: bolder;
+  }
+}

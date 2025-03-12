@@ -1,4 +1,3 @@
-@use 'sass:color';
 @use '../abstracts' as *;
 
 .attribution {
@@ -9,25 +8,14 @@
   }
 
   /// Wrap with `& {}` so it won't throw `mixed decls` warning.
-  /// Because these declarations below are after nested rule `@include... {}`.
+  /// Because these declarations are after nested rule `@include... {}`.
   /// Source: https://sass-lang.com/documentation/breaking-changes/mixed-decls/.
   & {
-    position: absolute;
+    position: absolute; /// Absolute from .container
     left: 0;
     right: 0;
-
     top: calc(100% + var(--spacing));
 
-    font-size: 11px;
     text-align: center;
-
-    color: color.adjust($color-grey, $blackness: 10%);
-  }
-
-  &__a {
-    // color: hsl(228, 45%, 44%);
-    // color: inherit;
-    color: color.adjust($color-grey, $blackness: 50%);
-    font-weight: bolder;
   }
 }

@@ -45,9 +45,21 @@ main {
   }
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                 Typography                                 */
+/* -------------------------------------------------------------------------- */
 body {
   color: hsl(228, 12%, 48%);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.attribution {
+  font-size: 11px;
+  color: hsl(228, 1.7674418605%, 43%);
+}
+.attribution__a {
+  color: hsl(0, 0%, 30.5025996534%);
+  font-weight: bolder;
 }
 
 .btn {
@@ -144,13 +156,7 @@ body {
   left: 0;
   right: 0;
   top: calc(100% + var(--spacing));
-  font-size: 11px;
   text-align: center;
-  color: hsl(228, 1.7674418605%, 43%);
-}
-.attribution__a {
-  color: hsl(0, 0%, 30.5025996534%);
-  font-weight: bolder;
 }
 
 /*# sourceMappingURL=style.css.map */
