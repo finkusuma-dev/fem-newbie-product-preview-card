@@ -77,7 +77,7 @@ body {
 .btn {
   height: 3.125rem;
   border-radius: 8px;
-  border: 1px solid hsl(228, 12%, 48%);
+  border: 1px solid hsl(0, 0%, 71.7882504842%);
   background-color: hsl(30, 38%, 92%);
   color: hsl(212, 21%, 14%);
   font: 700 0.875rem / 1.1 "Montserrat", sans-serif;
@@ -90,6 +90,9 @@ body {
 .btn--primary {
   background-color: hsl(158, 36%, 37%);
   color: hsl(0, 0%, 100%);
+}
+.btn--primary svg {
+  fill: #fff;
 }
 
 /* -------------------------------------------------------------------------- */
