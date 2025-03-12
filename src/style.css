@@ -132,6 +132,14 @@ body {
 }
 
 .attribution {
+  --spacing: 16px;
+}
+@media (min-width: 48rem) {
+  .attribution {
+    --spacing: 24px;
+  }
+}
+.attribution {
   position: absolute;
   left: 0;
   right: 0;
@@ -139,12 +147,6 @@ body {
   font-size: 11px;
   text-align: center;
   color: hsl(228, 1.7674418605%, 43%);
-  --spacing: 16px;
-}
-@media (min-width: 48rem) {
-  .attribution {
-    --spacing: 24px;
-  }
 }
 .attribution__a {
   color: hsl(0, 0%, 30.5025996534%);
