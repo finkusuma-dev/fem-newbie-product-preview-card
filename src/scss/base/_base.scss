@@ -1,5 +1,8 @@
 @use '../abstracts' as *;
 
+/* -------------------------------------------------------------------------- */
+/*                                    Base                                    */
+/* -------------------------------------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -14,6 +17,8 @@ body {
 
   @include respond-to($tablet) {
     min-height: 100vh;
+
+    /* To center .container */
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,3 +1,6 @@
+/* -------------------------------------------------------------------------- */
+/*                                    Base                                    */
+/* -------------------------------------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -13,6 +16,7 @@ body {
 @media (min-width: 48rem) {
   body {
     min-height: 100vh;
+    /* To center .container */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,6 +27,9 @@ main {
   max-width: fit-content;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                   Helpers                                  */
+/* -------------------------------------------------------------------------- */
 /* ie9+ */
 .visually-hidden:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
@@ -37,10 +44,12 @@ main {
 .container {
   max-width: fit-content;
   margin: 80px 12px 100px;
+  /*  For footer.attribution `position: absolute` */
   position: relative;
 }
 @media (min-width: 48rem) {
   .container {
+    /* .container is positioned center on body */
     margin: unset;
   }
 }
@@ -62,6 +71,9 @@ body {
   font-weight: bolder;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                              Components/Button                             */
+/* -------------------------------------------------------------------------- */
 .btn {
   height: 3.125rem;
   border-radius: 8px;
@@ -80,6 +92,9 @@ body {
   color: hsl(0, 0%, 100%);
 }
 
+/* -------------------------------------------------------------------------- */
+/*                       Components/Product Preview Card                      */
+/* -------------------------------------------------------------------------- */
 .product-preview-card {
   border-radius: 8px;
   background-color: hsl(0, 0%, 100%);
@@ -101,13 +116,6 @@ body {
   flex-direction: column;
   gap: 1.5rem;
 }
-.product-preview-card__title {
-  font: 700 2rem / 1 "Fraunces", sans-serif;
-  color: hsl(212, 21%, 14%);
-}
-.product-preview-card__description {
-  font: 500 0.875rem / 1.6 "Montserrat", sans-serif;
-}
 .product-preview-card__prices {
   display: flex;
   align-items: center;
@@ -119,6 +127,13 @@ body {
 .product-preview-card__price {
   font: 700 2rem / 1 "Fraunces", sans-serif;
   color: hsl(158, 36%, 37%);
+}
+.product-preview-card__title {
+  font: 700 2rem / 1 "Fraunces", sans-serif;
+  color: hsl(212, 21%, 14%);
+}
+.product-preview-card__description {
+  font: 500 0.875rem / 1.6 "Montserrat", sans-serif;
 }
 @media (min-width: 48rem) {
   .product-preview-card {
@@ -137,12 +152,18 @@ body {
   }
 }
 
+/* -------------------------------------------------------------------------- */
+/*                           Components/Ribbon text                           */
+/* -------------------------------------------------------------------------- */
 .ribbon-text {
   font: 500 0.75rem / 1.2 "Montserrat", sans-serif;
   letter-spacing: 5px;
   text-transform: uppercase;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                Layout/Footer                               */
+/* -------------------------------------------------------------------------- */
 .attribution {
   --spacing: 16px;
 }

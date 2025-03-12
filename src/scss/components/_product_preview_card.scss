@@ -1,5 +1,8 @@
 @use '../abstracts' as *;
 
+/* -------------------------------------------------------------------------- */
+/*                       Components/Product Preview Card                      */
+/* -------------------------------------------------------------------------- */
 .product-preview-card {
   border-radius: $spacing-100;
   background-color: $color-white;
@@ -13,7 +16,7 @@
     }
   }
 
-  &__text-half {
+  &__text-half /* container */ {
     padding: $spacing-400;
 
     display: flex;
@@ -21,24 +24,11 @@
     gap: rem($spacing-300);
   }
 
-  &__text-content {
+  //* ---------------------------- Inside text-half ---------------------------- */
+  &__text-content /* container */ {
     display: flex;
     flex-direction: column;
     gap: rem($spacing-300);
-  }
-
-  &__title {
-    font: $text-preset-1;
-    color: $color-black;
-  }
-
-  // &__ribbon {
-  // font: $text-preset-4;
-  // letter-spacing: 5px;
-  // }
-
-  &__description {
-    font: $text-preset-3;
   }
 
   &__prices {
@@ -55,6 +45,24 @@
     font: $text-preset-1;
     color: $color-green-500;
   }
+
+  //* --------------------------- Inside text-content -------------------------- */
+
+  &__title {
+    font: $text-preset-1;
+    color: $color-black;
+  }
+
+  // &__ribbon {
+  // font: $text-preset-4;
+  // letter-spacing: 5px;
+  // }
+
+  &__description {
+    font: $text-preset-3;
+  }
+
+  //* -------------------------------------------------------------------------- */
 
   @include respond-to($tablet) {
     width: 600px;

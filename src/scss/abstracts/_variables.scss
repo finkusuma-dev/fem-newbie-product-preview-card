@@ -3,18 +3,20 @@
 $tablet: 'tablet';
 $desktop: 'desktop';
 
+/// SASS Map
+/// Source: https://sass-lang.com/documentation/values/maps/
 $breakpoints: (
   $tablet: functions.rem(768px),
   $desktop: functions.rem(1440px),
 );
 
-// # Colors
-// ## Primary
+/// # Colors
+/// ## Primary
 
 $color-green-500: hsl(158, 36%, 37%);
 $color-green-700: hsl(158, 42%, 18%);
 
-// ## Neutral
+/// ## Neutral
 
 $color-black: hsl(212, 21%, 14%);
 $color-grey: hsl(228, 12%, 48%);
@@ -24,7 +26,8 @@ $color-white: hsl(0, 0%, 100%);
 $font-fraunces: 'Fraunces';
 $font-montserrat: 'Montserrat';
 
-// # Text Presets
+/// # Text Presets
+/// TODO: find more why `/` need to be inside `#{''}`.
 $text-preset-1: 700 functions.rem(32px) #{'/'} 1 $font-fraunces, sans-serif;
 $text-preset-2: 700 functions.rem(14px) #{'/'} 1.1 $font-montserrat, sans-serif;
 $text-preset-3: 500 functions.rem(14px) #{'/'} 1.6 $font-montserrat, sans-serif;

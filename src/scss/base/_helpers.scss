@@ -1,5 +1,9 @@
 @use '../abstracts' as *;
 
+/* -------------------------------------------------------------------------- */
+/*                                   Helpers                                  */
+/* -------------------------------------------------------------------------- */
+
 /* ie9+ */
 .visually-hidden:not(:focus):not(:active) {
   clip: rect(0 0 0 0);
@@ -14,9 +18,12 @@
 .container {
   max-width: fit-content;
   margin: 80px 12px 100px;
+
+  /*  For footer.attribution `position: absolute` */
   position: relative;
 
   @include respond-to($tablet) {
+    /* .container is positioned center on body */
     margin: unset;
   }
 }

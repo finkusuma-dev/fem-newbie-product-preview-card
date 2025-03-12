@@ -1,5 +1,8 @@
 @use '../abstracts' as *;
 
+/* -------------------------------------------------------------------------- */
+/*                                Layout/Footer                               */
+/* -------------------------------------------------------------------------- */
 .attribution {
   /// Using CSS variables to store the spacing values that change between layouts.
   --spacing: #{$spacing-200};
