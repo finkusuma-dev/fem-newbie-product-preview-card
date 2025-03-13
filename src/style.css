@@ -27,6 +27,11 @@ main {
   max-width: fit-content;
 }
 
+*:focus-visible {
+  outline: 0.125rem solid hsl(212, 21%, 14%);
+  border-radius: 0.125rem;
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                   Helpers                                  */
 /* -------------------------------------------------------------------------- */
@@ -75,7 +80,7 @@ body {
 /* -------------------------------------------------------------------------- */
 .btn {
   height: 3.125rem;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   border: 1px solid hsl(0, 0%, 71.7882504842%);
   background-color: hsl(30, 38%, 92%);
   color: hsl(212, 21%, 14%);
@@ -85,10 +90,20 @@ body {
   justify-content: center;
   gap: 8px;
 }
+.btn:hover {
+  background-color: hsl(30, 42%, 85%);
+}
+.btn:focus-visible {
+  outline: 0.1875rem dashed hsl(212, 21%, 14%);
+  outline-offset: 1px;
+}
 
 .btn--primary {
   background-color: hsl(158, 36%, 37%);
   color: hsl(0, 0%, 100%);
+}
+.btn--primary:hover {
+  background-color: hsl(158, 42%, 18%);
 }
 .btn--primary svg {
   fill: #fff;

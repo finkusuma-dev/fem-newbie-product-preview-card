@@ -6,7 +6,7 @@
 /* -------------------------------------------------------------------------- */
 .btn {
   height: rem(50px);
-  border-radius: $spacing-100;
+  border-radius: rem($spacing-100);
   // border: 1px solid color.adjust($color-grey, $lightness: 30%);
   border: 1px solid color.adjust($color-cream, $blackness: 30%);
 
@@ -18,11 +18,30 @@
   align-items: center;
   justify-content: center;
   gap: $spacing-100;
+
+  &:hover {
+    // background-color: color.adjust($color-cream, $blackness: 2%);
+    background-color: $color-cream-darker;
+  }
+
+  &:focus-visible {
+    outline: rem(3px) dashed $color-black;
+    outline-offset: 1px;
+  }
 }
 
 .btn--primary {
   background-color: $color-green-500;
   color: $color-white;
+
+  &:hover {
+    background-color: $color-green-700;
+  }
+
+  // &:focus-visible {
+  // outline-color: $color-cream-saturated;
+  // border-radius: 2px;
+  // }
 
   svg {
     fill: #fff;

@@ -28,3 +28,8 @@ body {
 main {
   max-width: fit-content;
 }
+
+*:focus-visible {
+  outline: rem(2px) solid $color-black;
+  border-radius: rem(2px);
+}
