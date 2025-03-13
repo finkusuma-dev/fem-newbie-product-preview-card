@@ -5,9 +5,9 @@
 /* -------------------------------------------------------------------------- */
 .attribution {
   /// Using CSS variables to store the spacing values that change between layouts.
-  --spacing: #{$spacing-200};
+  --spacing: #{rem($spacing-200)};
   @include respond-to($tablet) {
-    --spacing: #{$spacing-300};
+    --spacing: #{rem($spacing-300)};
   }
 
   /// Wrap with `& {}` so it won't throw `mixed decls` warning.

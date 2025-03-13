@@ -17,13 +17,13 @@
 
 .container {
   max-width: fit-content;
-  margin: 80px 12px 100px;
+  margin: rem(80px) 12px rem(100px);
 
   /*  For footer.attribution `position: absolute` */
   position: relative;
 
   @include respond-to($tablet) {
     /* .container is positioned center on body */
-    margin: unset;
+    // margin: unset;
   }
 }

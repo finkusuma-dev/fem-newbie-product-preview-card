@@ -43,14 +43,13 @@ main {
 
 .container {
   max-width: fit-content;
-  margin: 80px 12px 100px;
+  margin: 5rem 12px 6.25rem;
   /*  For footer.attribution `position: absolute` */
   position: relative;
 }
 @media (min-width: 48rem) {
   .container {
     /* .container is positioned center on body */
-    margin: unset;
   }
 }
 
@@ -63,12 +62,12 @@ body {
 }
 
 .attribution {
-  font-size: 11px;
-  color: hsl(228, 1.7674418605%, 43%);
+  font-size: 0.6875rem;
+  color: hsl(0, 0%, 38.9380530973%);
 }
 .attribution__a {
   color: hsl(0, 0%, 30.5025996534%);
-  font-weight: bolder;
+  font-weight: 900;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -99,7 +98,7 @@ body {
 /*                       Components/Product Preview Card                      */
 /* -------------------------------------------------------------------------- */
 .product-preview-card {
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background-color: hsl(0, 0%, 100%);
   overflow: hidden;
 }
@@ -140,7 +139,7 @@ body {
 }
 @media (min-width: 48rem) {
   .product-preview-card {
-    width: 600px;
+    width: 37.5rem;
     display: flex;
   }
   .product-preview-card__img-half {
@@ -168,11 +167,11 @@ body {
 /*                                Layout/Footer                               */
 /* -------------------------------------------------------------------------- */
 .attribution {
-  --spacing: 16px;
+  --spacing: 1rem;
 }
 @media (min-width: 48rem) {
   .attribution {
-    --spacing: 24px;
+    --spacing: 1.5rem;
   }
 }
 .attribution {

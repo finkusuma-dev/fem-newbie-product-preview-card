@@ -4,7 +4,7 @@
 /*                       Components/Product Preview Card                      */
 /* -------------------------------------------------------------------------- */
 .product-preview-card {
-  border-radius: $spacing-100;
+  border-radius: rem($spacing-100);
   background-color: $color-white;
   overflow: hidden;
 
@@ -65,7 +65,7 @@
   //* -------------------------------------------------------------------------- */
 
   @include respond-to($tablet) {
-    width: 600px;
+    width: rem(600px);
     display: flex;
 
     &__img-half {
