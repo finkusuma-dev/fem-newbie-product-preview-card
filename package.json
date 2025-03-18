@@ -12,8 +12,8 @@
   "author": "Arifin Kusuma",
   "type": "commonjs",
   "scripts": {
-    "watch:sass": "sass --watch src/scss:src --source-map-urls=relative",
-    "build:sass": "sass src/scss:public --no-source-map",
+    "watch:sass": "sass --watch src/sass:src --source-map-urls=relative",
+    "build:sass": "sass src/sass:public --no-source-map",
     "copy": "cpx \"src/**/*.{html,jpg,png,svg}\" public",
     "serve": "browser-sync start --server src --files src",
     "postbuild": "postcss public/*.css -u autoprefixer cssnano -r --no-map",
