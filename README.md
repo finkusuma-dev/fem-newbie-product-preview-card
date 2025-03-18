@@ -22,6 +22,7 @@ npm start
       - [🔵 Embed `svg` directly into HTML](#-embed-svg-directly-into-html)
     - [Sass Implementations](#sass-implementations)
       - [🟢 Setup Sass project](#-setup-sass-project)
+      - [🟢 Sass folder and file structure](#-sass-folder-and-file-structure)
     - [Useful Resources](#useful-resources)
   - [Author](#author)
 
@@ -127,7 +128,7 @@ Add these _NPM scripts_ code in the _package.json_ file:
 ...
 ```
 
-To run the script, run it on command prompt. There are two main scripts that you can run:
+There are two main scripts that you can run:
 
 - `start` (run using `npm run start` or just `npm start`), and
 - `build` (run using `npm run build` ).
@@ -141,7 +142,7 @@ These are the breakdown of the scripts. The 5 other scripts are executed in the 
 
   This is used when developing the project. It executes these 2 other scripts in parallel:
 
-  - `"watch:sass": "sass --watch src/scss:src --source-map-urls=relative"`
+  - `"watch:sass": "sass --watch src/sass:src --source-map-urls=relative"`
 
     Compile the `*.scss` files in the _src/scss_ directory to _src/style.css_. Also auto compile it if there are changes to the `*.scss` files.
 
@@ -157,7 +158,7 @@ These are the breakdown of the scripts. The 5 other scripts are executed in the 
 
   It executes these 3 other scripts:
 
-  - `"build:sass": "sass src/scss:public --no-source-map"`
+  - `"build:sass": "sass src/sass:public --no-source-map"`
 
     Compile the `*.scss` file at once, no need to watch the changes. The CSS output is in the public folder.
 
@@ -168,6 +169,34 @@ These are the breakdown of the scripts. The 5 other scripts are executed in the 
   - `"postbuild": "postcss public/*.css -u autoprefixer cssnano -r --no-map"`
 
     This script is run automatically after running the _build_ script. It adds browser prefixes to the CSS and then compress the CSS.
+
+#### 🟢 Sass folder and file structure
+
+The Sass files are located in _/src/sass/_ folder.
+
+It consists of:
+
+- `style.scss`.
+- Sass partial files (prefixed with an underscore "\_"). Example: `_base.scss`.
+
+  The partial files are put inside multiple folders. The folder structure is called 7-1 pattern [^4]. There are 7 folders of which each has one or more than one Sass partial files inside. All these partial files are imported in the `style.scss`.
+
+Each of the partial files has underscore "\_" as its prefix and will be skipped by the Sass compiler. There will be only one file that is compiled: `style.scss`, compiled to `style.css`.
+
+```YAML
+public/
+src/
+- sass/
+  - base/
+  - components/
+  - layout/
+  - pages/
+  - themes/
+  - abstracts/
+  - vendors/
+-   style.scss
+- index.html
+```
 
 ### Useful Resources
 
@@ -188,3 +217,4 @@ These are the breakdown of the scripts. The 5 other scripts are executed in the 
 [^1]: https://fedmentor.dev/posts/html-plan-product-preview/ - Grace snow's detailed step-by-step breakdown of the same challenge.
 [^2]: https://web.dev/learn/design/icons#styling_icons - Styling svg.
 [^3]: https://web.dev/learn/design/icons#icons_and_text - Presentational svg icon.
+[^4]: https://sass-guidelin.es/#the-7-1-pattern - Sass files and folders pattern.
