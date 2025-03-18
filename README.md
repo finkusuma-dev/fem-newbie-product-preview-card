@@ -93,7 +93,8 @@ Add these list of packages to the project using NPM. Install it as dev dependenc
 - **autoprefixer**: Automatically add browser prefixes to CSS properties (_postcss_ plugin).
 - **cssnano**: Compress CSS (_postcss_ plugin).
 
-**Note**: You can install them one by one, or install them all at once by listing all the package names separated by a space, ex: `npm install --save-dev package1 package2 package3`.
+> [!NOTE]
+> You can install them one by one, or install them all at once by listing all the package names separated by spaces. Example: `npm install --save-dev package1 package2 package3`.
 
 Once installed, there will be this code in the _package.json_ file.
 
@@ -126,29 +127,47 @@ Add these _NPM scripts_ code in the _package.json_ file:
 ...
 ```
 
-There are two main scripts that you can run:
+To run the script, run it on command prompt. There are two main scripts that you can run:
 
 - `start` (run using `npm run start` or just `npm start`), and
 - `build` (run using `npm run build` ).
 
-As an alternative to typing the command manually in the commandprompt, in VSCode you can show the _NPM Scripts_ panel inside the _Explorer_ panel by clicking the _three dots menu_ in the _Explorer_ title and check the _NPM Script_. Once the _NPM Scripts_ panel is shown you can just click the `run` button to run the script.
+> [!TIP]
+> As an alternative to typing the command manually in the command prompt, in VSCode you can show the _NPM Scripts_ panel inside the _Explorer_ panel by clicking the _three dots menu_ in the _Explorer_ title and check the _NPM Script_. Once the _NPM Scripts_ panel is shown you can just click the `run` button to run the script.
 
 These are the breakdown of the scripts. The 5 other scripts are executed in the 2 main scripts.
 
-- `"start": "npm-run-all --parallel watch:* serve"`: It is used when developing the project. It executes these 2 other scripts in parallel:
+- `"start": "npm-run-all --parallel watch:* serve"`
 
-  - `"watch:sass": "sass --watch src/scss:src --source-map-urls=relative"`: Compile the `*.scss` files in the _src/scss_ directory to _src/style.css_. Also auto compile it if there are changes to the `*.scss` files.
-  - `"serve": "browser-sync start --server src --files src",`: Launch a local development server, ex: `http://localhost:3000/`.
+  This is used when developing the project. It executes these 2 other scripts in parallel:
+
+  - `"watch:sass": "sass --watch src/scss:src --source-map-urls=relative"`
+
+    Compile the `*.scss` files in the _src/scss_ directory to _src/style.css_. Also auto compile it if there are changes to the `*.scss` files.
+
+  - `"serve": "browser-sync start --server src --files src"`
+
+    Launch a local development server, for example: `http://localhost:3000/`.
 
   With these 2 scripts, when you make changes on the html or scss files and save it, the changes will be shown immediately on the browser.
 
-- `"build": "npm-run-all build:* copy"`: It is used to compile the files for deployment on the remote server. This script produces files in _/public/_ folder.
+- `"build": "npm-run-all build:* copy"`
+
+  It is used to compile the files for deployment on the remote server. This script produces files in _/public/_ folder.
 
   It executes these 3 other scripts:
 
-  - `"build:sass": "sass src/scss:public --no-source-map"`: Compile the `*.scss` file at once, no need to watch the changes. The css output is in the public folder.
-  - `"copy": "cpx \"src/**/*.{html,jpg,png,svg}\" public"`: Copy all the `*.html` and the image files in the _/src/_ to the _/public/_ folder.
-  - `"postbuild": "postcss public/*.css -u autoprefixer cssnano -r --no-map"`: Automatically run after running the _build_ script. It adds browser prefixes to the CSS and then compress the CSS.
+  - `"build:sass": "sass src/scss:public --no-source-map"`
+
+    Compile the `*.scss` file at once, no need to watch the changes. The CSS output is in the public folder.
+
+  - `"copy": "cpx \"src/\*_/_.{html,jpg,png,svg}\" public"`
+
+    Copy all the `*.html` and the image files from the _/src/_ to the _/public/_ folder.
+
+  - `"postbuild": "postcss public/*.css -u autoprefixer cssnano -r --no-map"`
+
+    This script is run automatically after running the _build_ script. It adds browser prefixes to the CSS and then compress the CSS.
 
 ### Useful Resources
 
