@@ -28,6 +28,8 @@
     outline: rem(3px) dashed $color-black;
     outline-offset: 1px;
   }
+
+  // The default of svg.fill is black
 }
 
 .btn--primary {

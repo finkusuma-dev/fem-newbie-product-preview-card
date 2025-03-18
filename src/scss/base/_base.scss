@@ -14,19 +14,6 @@
 body {
   box-sizing: border-box;
   background-color: $color-cream;
-
-  @include media-up-to($medium) {
-    min-height: 100vh;
-
-    /* To center .container */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-main {
-  max-width: fit-content;
 }
 
 *:focus-visible {

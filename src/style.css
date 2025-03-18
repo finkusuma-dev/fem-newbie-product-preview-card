@@ -13,19 +13,6 @@ body {
   box-sizing: border-box;
   background-color: hsl(30, 38%, 92%);
 }
-@media (min-width: 48rem) {
-  body {
-    min-height: 100vh;
-    /* To center .container */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-main {
-  max-width: fit-content;
-}
 
 *:focus-visible {
   outline: 0.125rem solid hsl(212, 21%, 14%);
@@ -176,6 +163,20 @@ body {
   font: 500 0.75rem / 1.2 "Montserrat", sans-serif;
   letter-spacing: 5px;
   text-transform: uppercase;
+}
+
+@media (min-width: 48rem) {
+  body {
+    min-height: 100vh;
+    /* To center .container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+main {
+  max-width: fit-content;
 }
 
 /* -------------------------------------------------------------------------- */
