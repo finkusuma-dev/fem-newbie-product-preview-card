@@ -51,7 +51,7 @@ Users should be able to:
 
 ### HTML Implementations
 
-Using HTML structures and classes from Grace Snow's Product Preview Page [^1].
+Using HTML structures from Grace Snow's Product Preview Page [^1].
 
 #### 🔵 Embed `svg` directly into HTML
 
@@ -75,36 +75,42 @@ Hide the `svg` with `aria-hidden = "true"` as it is a presentational icon [^3].
 
 ### Sass Implementations
 
-If you didn't know about SASS, it is a stylesheet programming language made specific for CSS. It can do a lot more than normal CSS can do: more operations on variables, nesting selectors, create functions etc. You can read more [introduction to Sass](https://sass-lang.com/guide/).
+If you don't know about Sass, it is a stylesheet programming language made specific for CSS. It can do a lot more than normal CSS. More operations on variables, nesting selectors, create functions, etc. Read more [introduction to Sass](https://sass-lang.com/guide/).
 
 #### 🟢 Setup Sass project
 
-Sass is installed to the project using NPM, so you need to [install Node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) first if you haven't done so.
+Sass is installed in the project using NPM, so you need to [install Node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) first if you haven't done so.
 
-In the root project folder, execute `npm init` to create Node configuration file (more [beginner guide to using NPM](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm)).
+In the root project folder, execute `npm init` to create Node configuration file (read more [beginner guide to using NPM](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm)). This will create _package.json_ file in the root folder.
 
-Add these packages to the project using NPM. Install it as dev dependencies using `npm install --save-dev [package-name]`:
+Add these list of packages to the project using NPM. Install it as dev dependencies using `npm install --save-dev [package-name]`:
 
 - **sass**: Sass package.
-- **browser-sync**: To serve the html into your local machine, similar to [Live Server VSCode Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
-- **cpx2**: To copy html and image files.
+- [**browser-sync**](https://www.npmjs.com/package/browser-sync): To serve the html in your local machine, similar to [Live Server VSCode Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
+- [**cpx2**](https://www.npmjs.com/package/cpx2): To copy html and image files.
 - **npm-run-all**: Execute NPM script in parallel.
+- [**postcss-cli**](https://www.npmjs.com/package/postcss-cli): Process CSS after build process.
+- **autoprefixer**: Automatically add browser prefixes to CSS properties (_postcss_ plugin).
+- **cssnano**: Compress CSS (_postcss_ plugin).
 
-**Note**: You can install them one by one, or install them all at once by listing all the package names separated by a space, ex: `npm install --save-dev package1 package2 package 3`.
+**Note**: You can install them one by one, or install them all at once by listing all the package names separated by a space, ex: `npm install --save-dev package1 package2 package3`.
 
-Once installed, there will be this code in the _package.json_ file (in the root project folder).
+Once installed, there will be this code in the _package.json_ file.
 
 ```json
 ...
 "devDependencies": {
+  "autoprefixer": "^10.4.21",
   "browser-sync": "^3.0.3",
   "cpx2": "^8.0.0",
+  "cssnano": "^7.0.6",
   "npm-run-all": "^4.1.5",
+  "postcss-cli": "^11.0.1",
   "sass": "^1.85.1"
 }
 ```
 
-Add these `NPM scripts` code in the _package.json_ file:
+Add these _NPM scripts_ code in the _package.json_ file:
 
 ```json
 ...
@@ -113,37 +119,44 @@ Add these `NPM scripts` code in the _package.json_ file:
   "build:sass": "sass src/scss:public --no-source-map",
   "copy": "cpx \"src/**/*.{html,jpg,png,svg}\" public",
   "serve": "browser-sync start --server src --files src",
+  "postbuild": "postcss public/*.css -u autoprefixer cssnano -r --no-map",
   "start": "npm-run-all --parallel watch:* serve",
   "build": "npm-run-all build:* copy"
 },
 ...
 ```
 
-There are two main scripts here that you can run:
+There are two main scripts that you can run:
 
-- `start` (run using `npm run start` command or just `npm start`), and
-- `build` (run using `npm run build` command ).
+- `start` (run using `npm run start` or just `npm start`), and
+- `build` (run using `npm run build` ).
 
-As an alternative to typing the command manually in the prompt, in VSCode you can show the _NPM Scripts_ panel inside the _Explorer_ panel by clicking the _three dots_ in the _Explorer_ title and check the _NPM Script_. Once the _NPM Scripts_ panel is shown you can just click the `run` button to run the script.
+As an alternative to typing the command manually in the commandprompt, in VSCode you can show the _NPM Scripts_ panel inside the _Explorer_ panel by clicking the _three dots menu_ in the _Explorer_ title and check the _NPM Script_. Once the _NPM Scripts_ panel is shown you can just click the `run` button to run the script.
 
-The 4 other scripts are executed inside the 2 main scripts:
+These are the breakdown of the scripts. The 5 other scripts are executed in the 2 main scripts.
 
-- `start`: It is used when developing the project. It executes these 2 other scripts:
+- `"start": "npm-run-all --parallel watch:* serve"`: It is used when developing the project. It executes these 2 other scripts in parallel:
 
-  - `watch:sass`: Compile the `*.scss` files in the _src/scss_ directory to _src/style.css_. Also auto compile it if there are changes to the `*.scss` files.
-  - `serve`: Launch a local development server, ex: `http://localhost:3000/`.
+  - `"watch:sass": "sass --watch src/scss:src --source-map-urls=relative"`: Compile the `*.scss` files in the _src/scss_ directory to _src/style.css_. Also auto compile it if there are changes to the `*.scss` files.
+  - `"serve": "browser-sync start --server src --files src",`: Launch a local development server, ex: `http://localhost:3000/`.
 
-  With these 2 scripts, when you make changes on the html or scss style files and save it, the changes will be shown immediately on the browser.
+  With these 2 scripts, when you make changes on the html or scss files and save it, the changes will be shown immediately on the browser.
 
-- `build`: It is used when compiling the files for deployment on the remote server. It executes the 2 other scripts:
-  - `build:sass`:.
-  - `copy`
+- `"build": "npm-run-all build:* copy"`: It is used to compile the files for deployment on the remote server. This script produces files in _/public/_ folder.
+
+  It executes these 3 other scripts:
+
+  - `"build:sass": "sass src/scss:public --no-source-map"`: Compile the `*.scss` file at once, no need to watch the changes. The css output is in the public folder.
+  - `"copy": "cpx \"src/**/*.{html,jpg,png,svg}\" public"`: Copy all the `*.html` and the image files in the _/src/_ to the _/public/_ folder.
+  - `"postbuild": "postcss public/*.css -u autoprefixer cssnano -r --no-map"`: Automatically run after running the _build_ script. It adds browser prefixes to the CSS and then compress the CSS.
 
 ### Useful Resources
 
-- https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html#hiding-content-visually.
 - https://sass-lang.com.
 - https://sass-guidelin.es.
+- https://github.com/KittyGiraudel/sass-boilerplate/tree/master/stylesheets/base.
+- https://getbootstrap.com/docs/5.0/layout/breakpoints/#available-breakpoints.
+- https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html#hiding-content-visually.
 
 ## Author
 
@@ -153,6 +166,6 @@ The 4 other scripts are executed inside the 2 main scripts:
 
 ---
 
-[^1]: https://fedmentor.dev/posts/html-plan-product-preview/ - Grace snow's product preview page.
+[^1]: https://fedmentor.dev/posts/html-plan-product-preview/ - Grace snow's detailed step-by-step breakdown of the same challenge.
 [^2]: https://web.dev/learn/design/icons#styling_icons - Styling svg.
 [^3]: https://web.dev/learn/design/icons#icons_and_text - Presentational svg icon.
