@@ -1,0 +1,48 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'functions';
+
+$small: 'small';
+$medium: 'medium';
+$large: 'large';
+$extra-large: 'extra-large';
+$xxl: 'xxl';
+
+/// SASS Map
+/// Source: https://sass-lang.com/documentation/values/maps/
+$breakpoints: (
+  $small: functions.rem(576px),
+  $medium: functions.rem(768px),
+  $large: functions.rem(992px),
+  $extra-large: functions.rem(1200),
+  $xxl: functions.rem(1440px),
+);
+
+@mixin media-up-to($breakpoint) {
+  // @debug map.get($map: variables.$breakpoints, $key: $breakpointName);
+
+  $width: map.get(
+    $map: $breakpoints,
+    $key: $breakpoint,
+  );
+
+  // @debug ($width);
+  // @debug (meta.type-of($width));
+
+  @if $width {
+    $width: if(
+      meta.type-of($width) == 'string',
+      string.unquote($width),
+      $width
+    );
+    // @debug $width;
+  } @else {
+    @error 'No value found for `#{$breakpoint}`. '
+		   + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+
+  @media (min-width: $width) {
+    @content;
+  }
+}

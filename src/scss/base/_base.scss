@@ -15,7 +15,7 @@ body {
   box-sizing: border-box;
   background-color: $color-cream;
 
-  @include respond-to($tablet) {
+  @include media-up-to($medium) {
     min-height: 100vh;
 
     /* To center .container */

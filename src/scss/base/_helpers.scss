@@ -22,7 +22,7 @@
   /*  For footer.attribution `position: absolute` */
   position: relative;
 
-  @include respond-to($tablet) {
+  @include media-up-to($medium) {
     /* .container is positioned center on body */
     // margin: unset;
   }

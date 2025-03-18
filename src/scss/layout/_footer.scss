@@ -6,7 +6,8 @@
 .attribution {
   /// Using CSS variables to store the spacing values that change between layouts.
   --spacing: #{rem($spacing-200)};
-  @include respond-to($tablet) {
+
+  @include media-up-to($medium) {
     --spacing: #{rem($spacing-300)};
   }
 
