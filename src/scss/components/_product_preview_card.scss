@@ -8,13 +8,8 @@
   background-color: $color-white;
   overflow: hidden;
 
-  &__img-half {
-    img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-  }
+  // &__img-half {
+  // }
 
   &__text-half /* container */ {
     padding: $spacing-400;

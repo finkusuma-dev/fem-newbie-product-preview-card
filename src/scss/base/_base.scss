@@ -16,6 +16,12 @@ body {
   background-color: $color-cream;
 }
 
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 *:focus-visible {
   outline: rem(2px) solid $color-black;
   border-radius: rem(2px);
