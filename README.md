@@ -162,7 +162,7 @@ These are the breakdown of the scripts. The other 5 scripts are executed in the 
 
 - `"start": "npm-run-all --parallel watch:* serve"`
 
-  This is used when developing the project. It executes these other 2 scripts in parallel:
+  This is used when developing the project. It executes the other 2 scripts in parallel:
 
   - `"watch:sass": "sass --watch src/sass:src --source-map-urls=relative"`
 
@@ -178,7 +178,7 @@ These are the breakdown of the scripts. The other 5 scripts are executed in the 
 
   It is used to compile the files for deployment on the remote server. This script produces files in _/public/_ folder.
 
-  It executes these other 3 scripts:
+  It executes the other 3 scripts:
 
   - `"build:sass": "sass src/sass:public --no-source-map"`
 
@@ -204,9 +204,9 @@ It consists of:
 - `style.scss`.
 - Sass partial files (prefixed with an underscore "\_"). Example: `_base.scss`.
 
-  The partial files are put inside multiple folders. The folder structure is called 7-1 pattern [^4]. There are 7 folders of which each has one or more than one Sass partial files inside. All these partial files are imported in the `style.scss`.
+  The partial files are put inside multiple folders. The folder structure is using the 7-1 pattern [^4]. There are 7 folders of which each has one or more than one Sass partial files inside. All these partial files are imported in the `style.scss`.
 
-Each of the partial files has underscore "\_" as its prefix and will be skipped by the Sass compiler. There will be only one file that is compiled: `style.scss`, compiled to `style.css`.
+Each of the partial files has underscore "\_" as its prefix and is skipped by the Sass compiler. Only one file is compiled: `style.scss` to `style.css`.
 
 ```YAML
 - public/
