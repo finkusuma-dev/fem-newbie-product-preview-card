@@ -4,6 +4,9 @@
 /*                           Components/Ribbon text                           */
 /* -------------------------------------------------------------------------- */
 .ribbon-text {
+  /* TODO: Refactor this font & letter-spacing that makes assigning text preset code separated, 
+           maybe use Mixin 
+  */
   font: $text-preset-4;
   letter-spacing: 5px;
   text-transform: uppercase;
