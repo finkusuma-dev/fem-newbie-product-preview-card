@@ -23,6 +23,8 @@ npm start
     - [Sass Implementations](#sass-implementations)
       - [🟢 Setup Sass project](#-setup-sass-project)
       - [🟢 Sass folder and file structure](#-sass-folder-and-file-structure)
+      - [🟢 Implementing `rem` using Sass _function_](#-implementing-rem-using-sass-function)
+      - [🟢 Implementing responsive layout media queries using _Mixin_](#-implementing-responsive-layout-media-queries-using-mixin)
     - [Useful Resources](#useful-resources)
   - [Author](#author)
 
@@ -73,6 +75,8 @@ Hide the `svg` with `aria-hidden = "true"` as it is a presentational icon [^3].
   <span>Add to Cart</span>
 </button>
 ```
+> [!NOTE]
+> This implementation is actually not necessary, but I just want to make some test with Sass.
 
 ### Sass Implementations
 
@@ -136,11 +140,11 @@ There are two main scripts that you can run:
 > [!TIP]
 > As an alternative to typing the command manually in the command prompt, in VSCode you can show the _NPM Scripts_ panel inside the _Explorer_ panel by clicking the _three dots menu_ in the _Explorer_ title and check the _NPM Script_. Once the _NPM Scripts_ panel is shown you can just click the `run` button to run the script.
 
-These are the breakdown of the scripts. The 5 other scripts are executed in the 2 main scripts.
+These are the breakdown of the scripts. The other 5 scripts are executed in the 2 main scripts.
 
 - `"start": "npm-run-all --parallel watch:* serve"`
 
-  This is used when developing the project. It executes these 2 other scripts in parallel:
+  This is used when developing the project. It executes these other 2 scripts in parallel:
 
   - `"watch:sass": "sass --watch src/sass:src --source-map-urls=relative"`
 
@@ -156,7 +160,7 @@ These are the breakdown of the scripts. The 5 other scripts are executed in the 
 
   It is used to compile the files for deployment on the remote server. This script produces files in _/public/_ folder.
 
-  It executes these 3 other scripts:
+  It executes these other 3 scripts:
 
   - `"build:sass": "sass src/sass:public --no-source-map"`
 
@@ -169,6 +173,9 @@ These are the breakdown of the scripts. The 5 other scripts are executed in the 
   - `"postbuild": "postcss public/*.css -u autoprefixer cssnano -r --no-map"`
 
     This script is run automatically after running the _build_ script. It adds browser prefixes to the CSS and then compress the CSS.
+
+  > [!NOTE]
+  > Even if I put the build script, I don't use the files in the _public/_ folder and put in the server, but I use the files in the _src/_ folder. The reason is to allow anyone to debug the Sass code.
 
 #### 🟢 Sass folder and file structure
 
@@ -184,8 +191,8 @@ It consists of:
 Each of the partial files has underscore "\_" as its prefix and will be skipped by the Sass compiler. There will be only one file that is compiled: `style.scss`, compiled to `style.css`.
 
 ```YAML
-public/
-src/
+- public/
+- src/
 - sass/
   - base/
   - components/
@@ -194,8 +201,84 @@ src/
   - themes/
   - abstracts/
   - vendors/
--   style.scss
+  - style.scss
 - index.html
+```
+
+#### 🟢 Implementing `rem` using Sass _function_
+
+If in the previous challenge I use [CSS variables to store `rem` unit](https://github.com/finkusuma-dev/fem-recipe-page/?tab=readme-ov-file#-css-variables-for-px-and-rem), in this challenge with Sass I created a functon to convert `px` to `rem`.
+
+```scss
+@function rem($value) {
+  @return if(math.unit($value) == 'px', calc($value / 16px * 1rem), $value);
+}
+```
+
+Using function is so much more convenient as you can just use it with the value in `px`.
+
+```scss
+.attribution {
+  font-size: rem(11px);
+}
+```
+
+Or use it with the variable.
+
+```scss
+.product-preview-card {
+  border-radius: rem($spacing-100);
+}
+```
+
+This function implements a false case where, if the value is not in pixels, it returns the original value without any conversion. This prevents unwanted results when we accidentally pass a variable with units other than pixels.
+
+#### 🟢 Implementing responsive layout media queries using _Mixin_
+
+With Sass it's easier to write media query. Sass has a feature called _mixin_. It enables to re-use styles to any part of the code.
+
+I put all the code related with the responsive layout in the `_breakpoints.scss` partial.
+
+```scss
+// _breakpoints.scss
+
+$breakpoints: (
+  $medium: functions.rem(768px),
+  $xxl: functions.rem(1440px),
+);
+
+@mixin media-up-to($breakpoint) {
+  ...
+}
+```
+
+To use the _mixin_, put `@include` followed by the _mixin_ name. This is an example of adding a tablet layout to `body` element.
+
+```scss
+body {
+  @include media-up-to($medium) {
+    min-height: 100vh;
+
+    /* To center .container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+```
+
+The compiled CSS result:
+
+```css
+@media (min-width: 48rem) {
+  body {
+    min-height: 100vh;
+    /* To center .container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
 ```
 
 ### Useful Resources
