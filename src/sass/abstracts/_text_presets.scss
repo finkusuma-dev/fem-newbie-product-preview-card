@@ -1,0 +1,27 @@
+@use 'sass:string';
+@use 'sass:list';
+@use 'functions';
+
+$font-fraunces: 'Fraunces';
+$font-montserrat: 'Montserrat';
+
+// /// # Text Presets
+// ///
+// /// Wrapping the slash character (`/`) in interpolation syntax so the code can work.
+// /// Without interpolation syntax, it doesn't work.
+
+// @debug functions.rem(32px);
+
+$text-1: ((700 functions.rem(32px) #{'/'} 1 $font-fraunces, sans-serif), 0);
+$text-2: ((700 functions.rem(14px) #{'/'} 1.1 $font-montserrat, sans-serif), 0);
+$text-3: ((500 functions.rem(14px) #{'/'} 1.6 $font-montserrat, sans-serif), 0);
+$text-4: (
+  (500 functions.rem(12px) #{'/'} 1.2 $font-montserrat, sans-serif),
+  5px
+);
+$text-5: ((500 functions.rem(13px) #{'/'} 1.2 $font-montserrat, sans-serif), 0);
+
+@mixin text-preset($preset) {
+  font: list.nth($preset, 1);
+  letter-spacing: list.nth($preset, 2);
+}

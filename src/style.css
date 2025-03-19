@@ -78,6 +78,7 @@ body {
   background-color: hsl(30, 38%, 92%);
   color: hsl(212, 21%, 14%);
   font: 700 0.875rem / 1.1 "Montserrat", sans-serif;
+  letter-spacing: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,17 +129,21 @@ body {
 }
 .product-preview-card__prices s {
   font: 500 0.8125rem / 1.2 "Montserrat", sans-serif;
+  letter-spacing: 0;
 }
 .product-preview-card__price {
   font: 700 2rem / 1 "Fraunces", sans-serif;
+  letter-spacing: 0;
   color: hsl(158, 36%, 37%);
 }
 .product-preview-card__title {
   font: 700 2rem / 1 "Fraunces", sans-serif;
+  letter-spacing: 0;
   color: hsl(212, 21%, 14%);
 }
 .product-preview-card__description {
   font: 500 0.875rem / 1.6 "Montserrat", sans-serif;
+  letter-spacing: 0;
 }
 @media (min-width: 48rem) {
   .product-preview-card {

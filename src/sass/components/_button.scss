@@ -12,7 +12,8 @@
 
   background-color: $color-cream;
   color: $color-black;
-  font: $text-preset-2;
+
+  @include text-preset($text-2);
 
   display: flex;
   align-items: center;
