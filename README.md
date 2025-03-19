@@ -20,6 +20,7 @@ npm start
     - [Built with](#built-with)
     - [HTML Implementations](#html-implementations)
       - [🔵 Embed `svg` directly into HTML](#-embed-svg-directly-into-html)
+      - [🔵 Applying responsive image using `<picture>`](#-applying-responsive-image-using-picture)
     - [Sass Implementations](#sass-implementations)
       - [🟢 Setup Sass project](#-setup-sass-project)
       - [🟢 Sass folder and file structure](#-sass-folder-and-file-structure)
@@ -58,9 +59,14 @@ Using HTML structures from Grace Snow's Product Preview Page [^1].
 
 #### 🔵 Embed `svg` directly into HTML
 
-Embed `svg` code (_icon-cart.svg_ content) directly into HTML, so its `fill` color can be adjusted based on the button variants [^2].
+Embed the `svg` code (_icon-cart.svg_ content) directly into HTML, to adjust its `fill` color based on the button variants [^2].
 
-Hide the `svg` with `aria-hidden = "true"` as it is a presentational icon [^3].
+> [!NOTE]
+> The code below has `btn--primary` class that makes the button's color `green` and the `svg` `fill` =`white`. If the `btn--primary` is removed, the button's color becomes `cream` and `svg` `fill` becomes `black`.
+>
+> This implementation is actually not necessary, but I decided to make some test.
+
+Also hide the `svg` with `aria-hidden = "true"` as it is a presentational icon [^3].
 
 ```html
 <button class="btn btn--primary">
@@ -75,8 +81,20 @@ Hide the `svg` with `aria-hidden = "true"` as it is a presentational icon [^3].
   <span>Add to Cart</span>
 </button>
 ```
-> [!NOTE]
-> This implementation is actually not necessary, but I just want to make some test with Sass.
+
+#### 🔵 Applying responsive image using `<picture>`
+
+Utilize `<picture>` element to put different images on mobile and tablet layout (the mobile layout has the cropped version of the image) [^5].
+
+```html
+<picture>
+  <source
+    srcset="./images/image-product-desktop.jpg"
+    media="(min-width: 48rem)"
+  />
+  <img src="./images/image-product-mobile.jpg" alt="Elegant parfume box" />
+</picture>
+```
 
 ### Sass Implementations
 
@@ -174,8 +192,8 @@ These are the breakdown of the scripts. The other 5 scripts are executed in the 
 
     This script is run automatically after running the _build_ script. It adds browser prefixes to the CSS and then compress the CSS.
 
-  > [!NOTE]
-  > Even if I put the build script, I don't use the files in the _public/_ folder and put in the server, but I use the files in the _src/_ folder. The reason is to allow anyone to debug the Sass code.
+> [!NOTE]
+> Even if I put the build script, I don't use the files in the _public/_ folder to put in the server, but I use the files in the _src/_ folder. The reason is to allow anyone to debug the Sass code.
 
 #### 🟢 Sass folder and file structure
 
@@ -301,3 +319,4 @@ The compiled CSS result:
 [^2]: https://web.dev/learn/design/icons#styling_icons - Styling svg.
 [^3]: https://web.dev/learn/design/icons#icons_and_text - Presentational svg icon.
 [^4]: https://sass-guidelin.es/#the-7-1-pattern - Sass files and folders pattern.
+[^5]: https://web.dev/learn/design/picture-element#cropping - Using cropped image on a small layout.
