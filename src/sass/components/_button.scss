@@ -25,6 +25,7 @@
   }
 
   &:focus-visible {
+    /// Using rem instead of px to make the highlight more visible when everything is large
     outline: rem(3px) dashed $color-black;
     outline-offset: 1px;
   }

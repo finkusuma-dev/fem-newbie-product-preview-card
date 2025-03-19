@@ -24,6 +24,8 @@
 
   @include media-up-to($medium) {
     /* .container is positioned center on body */
+    /// I commented this below because in tablet layout it also requires margin.
+    /// The margin is visible in tablet layout on bigger default font size.
     // margin: unset;
   }
 }
