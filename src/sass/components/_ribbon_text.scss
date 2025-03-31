@@ -4,6 +4,6 @@
 /*                           Components/Ribbon text                           */
 /* -------------------------------------------------------------------------- */
 .ribbon-text {
-  @include text-preset($text-4);
+  @include apply-text-preset($text-preset-4);
   text-transform: uppercase;
 }

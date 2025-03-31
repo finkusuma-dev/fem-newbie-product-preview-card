@@ -32,19 +32,19 @@
     gap: rem($spacing-200);
 
     s {
-      @include text-preset($text-5);
+      @include apply-text-preset($text-preset-5);
     }
   }
 
   &__price {
-    @include text-preset($text-1);
+    @include apply-text-preset($text-preset-1);
     color: $color-green-500;
   }
 
   //* --------------------------- Inside text-section -------------------------- */
 
   &__title {
-    @include text-preset($text-1);
+    @include apply-text-preset($text-preset-1);
     color: $color-black;
   }
 
@@ -54,7 +54,7 @@
   // }
 
   &__description {
-    @include text-preset($text-3);
+    @include apply-text-preset($text-preset-3);
   }
 
   //* -------------------------------------------------------------------------- */

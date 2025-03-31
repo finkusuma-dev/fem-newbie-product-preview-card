@@ -1,5 +1,6 @@
 @use 'sass:string';
-@use 'sass:list';
+@use 'sass:map';
+// @use 'sass:list';
 @use 'functions';
 
 $font-fraunces: 'Fraunces';
@@ -12,16 +13,43 @@ $font-montserrat: 'Montserrat';
 
 // @debug functions.rem(32px);
 
-$text-1: ((700 functions.rem(32px) #{'/'} 1 $font-fraunces, sans-serif), 0);
-$text-2: ((700 functions.rem(14px) #{'/'} 1.1 $font-montserrat, sans-serif), 0);
-$text-3: ((500 functions.rem(14px) #{'/'} 1.6 $font-montserrat, sans-serif), 0);
-$text-4: (
-  (500 functions.rem(12px) #{'/'} 1.2 $font-montserrat, sans-serif),
-  5px
+$text-preset-1: (
+  'font': (
+    700 functions.rem(32px) #{'/'} 1 $font-fraunces,
+    sans-serif,
+  ),
+  'letter-spacing': 0,
 );
-$text-5: ((500 functions.rem(13px) #{'/'} 1.2 $font-montserrat, sans-serif), 0);
+$text-preset-2: (
+  'font': (
+    700 functions.rem(14px) #{'/'} 1.1 $font-montserrat,
+    sans-serif,
+  ),
+  'letter-spacing': 0,
+);
+$text-preset-3: (
+  'font': (
+    500 functions.rem(14px) #{'/'} 1.6 $font-montserrat,
+    sans-serif,
+  ),
+  'letter-spacing': 0,
+);
+$text-preset-4: (
+  'font': (
+    500 functions.rem(12px) #{'/'} 1.2 $font-montserrat,
+    sans-serif,
+  ),
+  'letter-spacing': 5px,
+);
+$text-preset-5: (
+  'font': (
+    500 functions.rem(13px) #{'/'} 1.2 $font-montserrat,
+    sans-serif,
+  ),
+  'letter-spacing': 0,
+);
 
-@mixin text-preset($preset) {
-  font: list.nth($preset, 1);
-  letter-spacing: list.nth($preset, 2);
+@mixin apply-text-preset($preset) {
+  font: map.get($preset, 'font');
+  letter-spacing: map.get($preset, 'letter-spacing');
 }
