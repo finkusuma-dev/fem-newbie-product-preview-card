@@ -26,6 +26,7 @@ npm start
       - [🟢 Sass folder and file structure](#-sass-folder-and-file-structure)
       - [🟢 Implementing `rem` using Sass _function_](#-implementing-rem-using-sass-function)
       - [🟢 Implementing responsive layout media queries using _Mixin_](#-implementing-responsive-layout-media-queries-using-mixin)
+      - [🟢 Implementing text presets using _Mixin_](#-implementing-text-presets-using-mixin)
     - [Useful Resources](#useful-resources)
   - [Author](#author)
 
@@ -233,7 +234,7 @@ If in the previous challenge I use [CSS variables to store `rem` unit](https://g
 }
 ```
 
-Using function is so much more convenient as you can just use it with the value in `px`.
+Using function is so much more convenient as you can just use the function in an assignment and pass the value in `px`.
 
 ```scss
 .attribution {
@@ -241,7 +242,7 @@ Using function is so much more convenient as you can just use it with the value 
 }
 ```
 
-Or use it with the variable.
+Or also can pass in a variable.
 
 ```scss
 .product-preview-card {
@@ -270,7 +271,7 @@ $breakpoints: (
 }
 ```
 
-To use the _mixin_, put `@include` followed by the _mixin_ name. This is an example of adding a tablet layout to `body` element.
+To use the _mixin_, call it with `@include` followed by the _mixin_ name. This is an example of adding a tablet layout to `body` element.
 
 ```scss
 body {
@@ -296,6 +297,55 @@ The compiled CSS result:
     justify-content: center;
     align-items: center;
   }
+}
+```
+
+#### 🟢 Implementing text presets using _Mixin_
+
+The text presets specified in the design includes CSS properties such as `font-family`, `font-size`, `font-weight`, `line-height`, and `letter-spacing`. All of those can be accepted by a CSS property (`font` ) except the `letter-spacing`. This makes assigning the text presets must apply the two properties: `font` and `letter-spacing` individually.
+
+```scss
+// abstracts/_variables.scss
+$text-preset-4: 500 functions.rem(12px) #{'/'} 1.2 $font-montserrat, sans-serif;
+
+// components/_ribbon_text.scss
+.ribbon-text {
+  font: $text-preset-4;
+  letter-spacing: 5px;
+}
+```
+
+To better assign the text presets, I created variables to hold a [Sass map](https://sass-lang.com/documentation/values/maps/) containing `font` value and `letter-spacing` value.
+
+```scss
+// abstracts/_text_presets.scss
+
+$text-preset-4: (
+  'font': (
+    500 functions.rem(12px) #{'/'} 1.2 $font-montserrat,
+    sans-serif,
+  ),
+  'letter-spacing': 5px,
+);
+```
+
+And a _mixin_ to map values to their corresponding CSS properties.
+
+```scss
+// abstracts/_text_presets.scss
+
+@mixin apply-text-preset($preset) {
+  font: map.get($preset, 'font');
+  letter-spacing: map.get($preset, 'letter-spacing');
+}
+```
+
+An example of how to apply the `text-preset-4` to `ribbon-text` class:
+
+```scss
+// components/_ribbon_text.scss
+.ribbon-text {
+  @include apply-text-preset($text-preset-4);
 }
 ```
 
