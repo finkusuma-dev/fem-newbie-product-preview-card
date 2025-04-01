@@ -302,7 +302,7 @@ The compiled CSS result:
 
 #### 🟢 Implementing text presets using _Mixin_
 
-The text presets specified in the design includes CSS properties such as `font-family`, `font-size`, `font-weight`, `line-height`, and `letter-spacing`. All of those can be accepted by a CSS property (`font` ) except the `letter-spacing`. This makes assigning the text presets must apply the two properties: `font` and `letter-spacing` individually.
+The text presets specified in the design includes CSS properties such as `font-family`, `font-size`, `font-weight`, `line-height`, and `letter-spacing`. All of those can be accepted by one CSS property `font`, except the `letter-spacing`. This makes assigning the text presets must be applied to the properties: `font` and `letter-spacing` individually.
 
 ```scss
 // abstracts/_variables.scss
@@ -315,7 +315,7 @@ $text-preset-4: 500 functions.rem(12px) #{'/'} 1.2 $font-montserrat, sans-serif;
 }
 ```
 
-To better assign the text presets, I created variables to hold a [Sass map](https://sass-lang.com/documentation/values/maps/) containing `font` value and `letter-spacing` value.
+To make the assignment the text presets better, I created variables to hold a [Sass map](https://sass-lang.com/documentation/values/maps/) containing `font` and `letter-spacing`.
 
 ```scss
 // abstracts/_text_presets.scss
@@ -340,7 +340,7 @@ And a _mixin_ to map values to their corresponding CSS properties.
 }
 ```
 
-An example of how to apply the `text-preset-4` to `ribbon-text` class:
+This is an example of how to apply the `text-preset-4` to `ribbon-text` class:
 
 ```scss
 // components/_ribbon_text.scss
