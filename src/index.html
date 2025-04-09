@@ -24,10 +24,10 @@
 
       <div class="product-preview-card">
         <div class="product-preview-card__img-half">
-          <!-- TODO: Make image lazily loaded to prevent content jump -->
           <picture>
-            <source srcset="./images/image-product-desktop.jpg" media="(min-width: 48rem)" />
-            <img src="./images/image-product-mobile.jpg" alt="Elegant parfume box">
+            <source srcset="./images/image-product-desktop.jpg" media="(min-width: 48rem)" width="600" height="900" />
+            <img src="./images/image-product-mobile.jpg" alt="Elegant parfume box" width="686" height="480"
+              loading="lazy">
           </picture>
         </div>
         <div class="product-preview-card__text-half">
