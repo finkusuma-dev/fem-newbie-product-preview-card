@@ -15,18 +15,20 @@ npm start
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
     - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
     - [Links](#links)
   - [My process](#my-process)
     - [Built with](#built-with)
     - [HTML Implementations](#html-implementations)
+      - [🔵 Add old price label for screen readers only](#-add-old-price-label-for-screen-readers-only)
       - [🔵 Embed `svg` directly into HTML](#-embed-svg-directly-into-html)
-      - [🔵 Applying responsive image using `<picture>`](#-applying-responsive-image-using-picture)
+      - [🔵 Apply responsive image using `<picture>`](#-apply-responsive-image-using-picture)
     - [Sass Implementations](#sass-implementations)
       - [🟢 Setup Sass project](#-setup-sass-project)
       - [🟢 Sass folder and file structure](#-sass-folder-and-file-structure)
-      - [🟢 Implementing `rem` using Sass _function_](#-implementing-rem-using-sass-function)
-      - [🟢 Implementing responsive layout media queries using _Mixin_](#-implementing-responsive-layout-media-queries-using-mixin)
-      - [🟢 Implementing text presets using _Mixin_](#-implementing-text-presets-using-mixin)
+      - [🟢 Implement `rem` using Sass _function_](#-implement-rem-using-sass-function)
+      - [🟢 Implement responsive layout media queries using _Mixin_](#-implement-responsive-layout-media-queries-using-mixin)
+      - [🟢 Implement text presets more effectively using _Mixin_](#-implement-text-presets-more-effectively-using-mixin)
     - [Useful Resources](#useful-resources)
   - [Author](#author)
 
@@ -41,16 +43,21 @@ Users should be able to:
 - View the optimal layout depending on their device's screen size
 - See hover and focus states for interactive elements
 
+### Screenshot
+
+<img src='./screenshot.jpg' width=800>
+
 ### Links
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [https://finkusuma-dev.github.io/fem-newbie-product-preview-card/](https://finkusuma-dev.github.io/fem-newbie-product-preview-card/)
 
 ## My process
 
 ### Built with
 
 - Semantic HTML5 markup
-- SASS (SCSS) with BEM
+- Sass (SCSS) for style preprocessing
+- BEM naming methodology
 - Flexbox
 - Mobile-first workflow
 
@@ -58,6 +65,29 @@ Users should be able to:
 
 I'm using HTML structures from Grace Snow's Product Preview Page [^1].
 And these are the details of the HTML implementations:
+
+#### 🔵 Add old price label for screen readers only
+
+The strikethrough text for the old price might be sufficient for normal users but it might not be sufficient for users using screenreaders. So additional label is added to give more information. This additional label is hidden visually, and only screenreaders can read it [^6].
+
+```html
+<s><span class="visually-hidden">Old price</span>$169.99</s>
+```
+
+```scss
+// _helpers.scss
+
+/* ie9+ */
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+```
 
 #### 🔵 Embed `svg` directly into HTML
 
@@ -83,7 +113,7 @@ This implementation is actually not necessary, but I just to make some test.
 
 Also hide the `svg` with `aria-hidden = "true"` as it is a presentational icon [^3].
 
-#### 🔵 Applying responsive image using `<picture>`
+#### 🔵 Apply responsive image using `<picture>`
 
 Utilize `<picture>` element to put different images on mobile and tablet layout. The mobile layout has the cropped version of the image [^5].
 
@@ -226,7 +256,7 @@ Each of the partial files has underscore "\_" as its prefix and is skipped by th
 - index.html
 ```
 
-#### 🟢 Implementing `rem` using Sass _function_
+#### 🟢 Implement `rem` using Sass _function_
 
 In the previous challenge I use [CSS variables to store `rem` unit](https://github.com/finkusuma-dev/fem-recipe-page/?tab=readme-ov-file#-css-variables-for-px-and-rem), in this challenge with Sass I created a functon to convert `px` to `rem`.
 
@@ -254,7 +284,7 @@ Or also can pass in a variable.
 
 This function implements a false case where, if the value is not in pixels, it returns the original value without any conversion. This prevents unwanted results when we accidentally pass a variable with units other than pixels.
 
-#### 🟢 Implementing responsive layout media queries using _Mixin_
+#### 🟢 Implement responsive layout media queries using _Mixin_
 
 With Sass it's easier to write media query. Using _Mixin_, it enables to re-use styles to any part of the code.
 
@@ -302,7 +332,7 @@ The compiled CSS result:
 }
 ```
 
-#### 🟢 Implementing text presets using _Mixin_
+#### 🟢 Implement text presets more effectively using _Mixin_
 
 The text presets specified in the design includes CSS properties such as `font-family`, `font-size`, `font-weight`, `line-height`, and `letter-spacing`. All of those can be accepted by a single CSS property: `font`, except the `letter-spacing`. This makes assigning the text presets must apply the `font` and `letter-spacing` individually.
 
@@ -317,7 +347,7 @@ $text-preset-4: 500 functions.rem(12px) #{'/'} 1.2 $font-montserrat, sans-serif;
 }
 ```
 
-To make assigning the text presets more effectively, I created variables to hold a [Sass map](https://sass-lang.com/documentation/values/maps/) containing `font` and `letter-spacing`.
+To make assigning the text presets more effective, I created variables to hold a [Sass map](https://sass-lang.com/documentation/values/maps/) containing `font` and `letter-spacing`.
 
 ```scss
 // abstracts/_text_presets.scss
@@ -352,11 +382,10 @@ This is the example of how to apply the `text-preset-4` to `ribbon-text` class:
 
 ### Useful Resources
 
-- https://sass-lang.com.
-- https://sass-guidelin.es.
-- https://github.com/KittyGiraudel/sass-boilerplate/tree/master/stylesheets/base.
-- https://getbootstrap.com/docs/5.0/layout/breakpoints/#available-breakpoints.
-- https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html#hiding-content-visually.
+- https://sass-lang.com/documentation/ - Sass documentation.
+- https://sass-guidelin.es - Sass guideline.
+- https://github.com/KittyGiraudel/sass-boilerplate - Sass boilerplate using 7-1 architecture pattern.
+- https://getbootstrap.com/docs/5.0/layout/breakpoints/#available-breakpoints - Bootstrap's breakpoints.
 
 ## Author
 
@@ -371,3 +400,4 @@ This is the example of how to apply the `text-preset-4` to `ribbon-text` class:
 [^3]: https://web.dev/learn/design/icons#icons_and_text - Presentational svg icon.
 [^4]: https://sass-guidelin.es/#the-7-1-pattern - Sass files and folders pattern.
 [^5]: https://web.dev/learn/design/picture-element#cropping - Using cropped image on a small layout.
+[^6]: https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html#hiding-content-visually - How to make HTML element visually hidden but seen by screenreaders.
