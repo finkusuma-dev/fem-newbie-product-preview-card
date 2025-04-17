@@ -111,13 +111,13 @@ The implementation of Sass in the project:
 
 3. Then add these list of packages to the project using NPM (Install it as dev dependencies using `npm install --save-dev [package-name]`):
 
-   - **sass**: Sass package.
+   - [**sass**](https://www.npmjs.com/package/sass): Sass package.
    - [**browser-sync**](https://www.npmjs.com/package/browser-sync): To serve the html in your local machine, similar to [Live Server VSCode Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
    - [**cpx2**](https://www.npmjs.com/package/cpx2): To copy html and image files.
-   - **npm-run-all**: Execute NPM script in parallel.
+   - [**npm-run-all**](https://www.npmjs.com/package/npm-run-all): Execute NPM script in parallel or sequential.
    - [**postcss-cli**](https://www.npmjs.com/package/postcss-cli): Process CSS after build process.
-   - **autoprefixer**: Automatically add browser prefixes to CSS properties (_postcss_ plugin).
-   - **cssnano**: Compress CSS (_postcss_ plugin).
+   - [**autoprefixer**](https://www.npmjs.com/package/autoprefixer): Automatically add browser prefixes to CSS properties (_postcss_ plugin).
+   - [**cssnano**](https://www.npmjs.com/package/cssnano): Compress CSS (_postcss_ plugin).
 
    > [!NOTE]
    > You can install them one by one, or install them all at once by listing all the package names separated by spaces. Example: `npm install --save-dev package1 package2 package3`.
