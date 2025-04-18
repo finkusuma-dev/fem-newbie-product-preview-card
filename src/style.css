@@ -47,7 +47,7 @@ img {
 }
 @media (min-width: 48rem) {
   .container {
-    /* .container is positioned center on body */
+    margin: 0 12px;
   }
 }
 

@@ -1,4 +1,4 @@
-@use '../abstracts' as *;
+@use "../abstracts" as *;
 
 /* -------------------------------------------------------------------------- */
 /*                                   Helpers                                  */
@@ -23,9 +23,7 @@
   position: relative;
 
   @include media-up-to($medium) {
-    /* .container is positioned center on body */
-    /// I commented this below because in tablet layout it also requires margin.
-    /// The margin is visible in tablet layout on bigger default font size.
-    // margin: unset;
+    /// The inline margin is visible in tablet layout on bigger default font size.
+    margin: 0 12px;
   }
 }
