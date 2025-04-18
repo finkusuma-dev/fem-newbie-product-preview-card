@@ -91,6 +91,9 @@ body {
   outline: 0.1875rem dashed hsl(212, 21%, 14%);
   outline-offset: 1px;
 }
+.btn svg {
+  fill: hsl(212, 21%, 14%);
+}
 
 .btn--primary {
   background-color: hsl(158, 36%, 37%);
@@ -100,7 +103,7 @@ body {
   background-color: hsl(158, 42%, 18%);
 }
 .btn--primary svg {
-  fill: #fff;
+  fill: hsl(0, 0%, 100%);
 }
 
 /* -------------------------------------------------------------------------- */
