@@ -50,6 +50,7 @@ Users should be able to:
 
 ### Links
 
+- Solution URL : [https://www.frontendmentor.io/solutions/product-preview-card-with-sass-scss-NpRwoc7_8Y](https://www.frontendmentor.io/solutions/product-preview-card-with-sass-scss-NpRwoc7_8Y)
 - Live Site URL: [https://finkusuma-dev.github.io/fem-newbie-product-preview-card/](https://finkusuma-dev.github.io/fem-newbie-product-preview-card/)
 
 ## My process
