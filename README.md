@@ -60,7 +60,7 @@ Using HTML structures from Grace Snow's Product Preview Page [^1].
 
 #### 🔵 Embed `svg` directly into HTML
 
-Embed the `svg` code (_icon-cart.svg_ content) directly into HTML, to adjust its `fill` color based on the button variants [^2].
+Embed the `svg` code directly into HTML, enables adjusting `svg` `fill` color based on the button variants [^2].
 
 > [!NOTE]
 > The code below has `btn--primary` class that makes the button's color `green` and the `svg` `fill` =`white`. If the `btn--primary` is removed, the button's color becomes `cream` and `svg` `fill` becomes `black`.
@@ -81,6 +81,28 @@ Also hide the `svg` with `aria-hidden = "true"` as it is a presentational icon [
   </svg>
   <span>Add to Cart</span>
 </button>
+```
+
+```scss
+// components/_button.scss
+
+.btn {
+  background-color: $color-cream;
+  color: $color-black;
+
+  svg {
+    fill: $color-black; // Adjust svg fill color
+  }
+}
+
+.btn--primary {
+  background-color: $color-green-500;
+  color: $color-white;
+
+  svg {
+    fill: $color-white; // Adjust svg fill color
+  }
+}
 ```
 
 #### 🔵 Applying responsive image using `<picture>`
@@ -230,7 +252,7 @@ If in the previous challenge I use [CSS variables to store `rem` unit](https://g
 
 ```scss
 @function rem($value) {
-  @return if(math.unit($value) == 'px', calc($value / 16px * 1rem), $value);
+  @return if(math.unit($value) == "px", calc($value / 16px * 1rem), $value);
 }
 ```
 
@@ -306,7 +328,7 @@ The text presets specified in the design includes CSS properties such as `font-f
 
 ```scss
 // abstracts/_variables.scss
-$text-preset-4: 500 functions.rem(12px) #{'/'} 1.2 $font-montserrat, sans-serif;
+$text-preset-4: 500 functions.rem(12px) #{"/"} 1.2 $font-montserrat, sans-serif;
 
 // components/_ribbon_text.scss
 .ribbon-text {
@@ -321,11 +343,11 @@ To make the assignment the text presets better, I created variables to hold a [S
 // abstracts/_text_presets.scss
 
 $text-preset-4: (
-  'font': (
-    500 functions.rem(12px) #{'/'} 1.2 $font-montserrat,
+  "font": (
+    500 functions.rem(12px) #{"/"} 1.2 $font-montserrat,
     sans-serif,
   ),
-  'letter-spacing': 5px,
+  "letter-spacing": 5px,
 );
 ```
 
@@ -335,8 +357,8 @@ And a _mixin_ to map values to their corresponding CSS properties.
 // abstracts/_text_presets.scss
 
 @mixin apply-text-preset($preset) {
-  font: map.get($preset, 'font');
-  letter-spacing: map.get($preset, 'letter-spacing');
+  font: map.get($preset, "font");
+  letter-spacing: map.get($preset, "letter-spacing");
 }
 ```
 
