@@ -22,7 +22,6 @@ npm start
     - [HTML Implementations](#html-implementations)
       - [🔵 Add old price label for screen readers only](#-add-old-price-label-for-screen-readers-only)
       - [🔵 Embed `svg` directly into HTML](#-embed-svg-directly-into-html)
-      - [🔵 Applying responsive image using `<picture>`](#-applying-responsive-image-using-picture)
       - [🔵 Apply responsive image using `<picture>`](#-apply-responsive-image-using-picture)
     - [Sass Implementations](#sass-implementations)
       - [🟢 Setup Sass project](#-setup-sass-project)
@@ -136,8 +135,6 @@ Also hide the `svg` with `aria-hidden = "true"` as it is a presentational icon [
   }
 }
 ```
-
-#### 🔵 Applying responsive image using `<picture>`
 
 #### 🔵 Apply responsive image using `<picture>`
 
@@ -288,7 +285,7 @@ In the previous challenge I use [CSS variables to store `rem` unit](https://gith
 
 ```scss
 @function rem($value) {
-  @return if(math.unit($value) == "px", calc($value / 16px * 1rem), $value);
+  @return if(math.unit($value) == 'px', calc($value / 16px * 1rem), $value);
 }
 ```
 
@@ -364,7 +361,7 @@ The text presets specified in the design includes CSS properties such as `font-f
 
 ```scss
 // abstracts/_variables.scss
-$text-preset-4: 500 functions.rem(12px) #{"/"} 1.2 $font-montserrat, sans-serif;
+$text-preset-4: 500 functions.rem(12px) #{'/'} 1.2 $font-montserrat, sans-serif;
 
 // components/_ribbon_text.scss
 .ribbon-text {
@@ -378,11 +375,11 @@ To make assigning the text presets more effective, I created variables to hold a
 ```scss
 // abstracts/_text_presets.scss
 $text-preset-4: (
-  "font": (
-    500 functions.rem(12px) #{"/"} 1.2 $font-montserrat,
+  'font': (
+    500 functions.rem(12px) #{'/'} 1.2 $font-montserrat,
     sans-serif,
   ),
-  "letter-spacing": 5px,
+  'letter-spacing': 5px,
 );
 ```
 
@@ -392,8 +389,8 @@ And then created a _mixin_ to map values to their corresponding CSS properties.
 // abstracts/_text_presets.scss
 
 @mixin apply-text-preset($preset) {
-  font: map.get($preset, "font");
-  letter-spacing: map.get($preset, "letter-spacing");
+  font: map.get($preset, 'font');
+  letter-spacing: map.get($preset, 'letter-spacing');
 }
 ```
 
